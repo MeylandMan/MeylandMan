@@ -1,8 +1,8 @@
-### Hi there 👋
+# Hi there 👋
 
 <p align="center">
   
-# Skills
+## Skills
 
 </br>
 
