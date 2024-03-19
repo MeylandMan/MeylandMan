@@ -1,16 +1,33 @@
 ### Hi there 👋
 
-<!--
-**MeylandMan/MeylandMan** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<p align="center">
+  
+# Skills
 
-Here are some ideas to get you started:
+</br>
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<b>EXPERIENCED<b>
+  ---
+![](https://github.com/MeylandMan/photos/blob/main/godot.png)
+![](https://github.com/MeylandMan/photos/blob/main/opengl.png)
+![](https://github.com/MeylandMan/photos/blob/main/Visual_Studio.png)
+![](https://github.com/MeylandMan/photos/blob/main/windows.png)
+
+</br>
+  
+<b>PROFICIENT<b> 
+  ---
+![](https://github.com/MeylandMan/photos/blob/main/gamemaker.png)
+![](https://github.com/MeylandMan/photos/blob/main/cs.png)
+ 
+</br>
+  
+<b>ENTRY-LEVEL<b>
+---
+![](https://github.com/MeylandMan/photos/blob/main/Cmake.png)
+![](https://github.com/MeylandMan/photos/blob/main/Cpp.png)
+![](https://github.com/MeylandMan/photos/blob/main/openTK.png)
+![](https://github.com/MeylandMan/photos/blob/main/Photoshop.png)
+</p>
+
+</br>
