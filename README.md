@@ -2,7 +2,7 @@
 
 <p align="center">
   
-## Skills
+# Skills
 
 </br>
 
