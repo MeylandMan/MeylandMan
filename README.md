@@ -1,12 +1,12 @@
+<p align="center"> 
+  
 # Hi there 👋
-
-<p align="center">
   
 # Skills
 
 </br>
 
-<b>EXPERIENCED<b>
+## EXPERIENCED
   ---
 ![](https://github.com/MeylandMan/photos/blob/main/godot.png)
 ![](https://github.com/MeylandMan/photos/blob/main/opengl.png)
@@ -15,14 +15,14 @@
 
 </br>
   
-<b>PROFICIENT<b> 
+## PROFICIENT
   ---
 ![](https://github.com/MeylandMan/photos/blob/main/gamemaker.png)
 ![](https://github.com/MeylandMan/photos/blob/main/cs.png)
 ![](https://github.com/MeylandMan/photos/blob/main/GitHUB.png)
 </br>
   
-<b>ENTRY-LEVEL<b>
+## ENTRY-LEVEL
 ---
 ![](https://github.com/MeylandMan/photos/blob/main/Cmake.png)
 ![](https://github.com/MeylandMan/photos/blob/main/Cpp.png)
