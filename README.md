@@ -7,16 +7,17 @@
 
 ## PROFICIENT
   ---
-![](https://github.com/MeylandMan/photos/blob/main/gamemaker.png)
-![](https://github.com/MeylandMan/photos/blob/main/cs.png)
-![](https://github.com/MeylandMan/photos/blob/main/GitHUB.png)
+### NONE
+
 </br>
 
 ## EXPERIENCED
   ---
 ![](https://github.com/MeylandMan/photos/blob/main/Visual_Studio.png)
 ![](https://github.com/MeylandMan/photos/blob/main/windows.png)
-
+![](https://github.com/MeylandMan/photos/blob/main/gamemaker.png)
+![](https://github.com/MeylandMan/photos/blob/main/cs.png)
+![](https://github.com/MeylandMan/photos/blob/main/GitHUB.png)
 </br>
   
 ## ENTRY-LEVEL
