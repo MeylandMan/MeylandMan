@@ -20,7 +20,6 @@
   ---
 
 ![](https://github.com/MeylandMan/photos/blob/main/windows.png)
-![](https://github.com/MeylandMan/photos/blob/main/gamemaker.png)
 ![](https://github.com/MeylandMan/photos/blob/main/GitHUB.png)
 ![](https://github.com/MeylandMan/photos/blob/main/cs.png)
 ![](https://github.com/MeylandMan/photos/blob/main/Visual_Studio.png)
@@ -34,6 +33,7 @@
 ![](https://github.com/MeylandMan/photos/blob/main/Cpp.png)
 ![](https://github.com/MeylandMan/photos/blob/main/Photoshop.png)
 ![](https://github.com/MeylandMan/photos/blob/main/Cmake.png)
+![](https://github.com/MeylandMan/photos/blob/main/gamemaker.png)
 </p>
 
 </br>
