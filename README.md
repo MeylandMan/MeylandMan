@@ -31,7 +31,6 @@
 ---
 ![](https://github.com/MeylandMan/photos/blob/main/godot.png)
 ![](https://github.com/MeylandMan/photos/blob/main/Cpp.png)
-![](https://github.com/MeylandMan/photos/blob/main/Photoshop.png)
 ![](https://github.com/MeylandMan/photos/blob/main/Cmake.png)
 ![](https://github.com/MeylandMan/photos/blob/main/gamemaker.png)
 </p>
