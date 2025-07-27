@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  overflow: hidden; /* Prevent scrollbars */
+}
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+canvas {
+  display: block; /* Remove extra space below canvas */
+}
