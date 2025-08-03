@@ -2,7 +2,7 @@
   
 # Hi there 👋
 
-[![Meyland's GitHub stats](https://github-readme-stats.vercel.app/api?username=MeylandMan&locale=en&hide_title=false&show_icons=true&theme=onedark))](https://github.com/anuraghazra/github-readme-stats)
+![Meyland's GitHub stats](https://github-readme-stats.vercel.app/api?username=MeylandMan&locale=en&hide_title=false&show_icons=true&theme=onedark)
 ![languages graph](https://github-readme-stats.vercel.app/api/top-langs/?username=MeylandMan&locale=en&hide_border=false&hide_title=false&show_icons=true&theme=onedark\&layout=compact&langs_count=6)
 
 # Skills
