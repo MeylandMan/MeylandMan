@@ -10,25 +10,32 @@
 
 ## PROFICIENT
   ---
-![](https://github.com/MeylandMan/photos/blob/main/Visual_Studio.png)
-![](https://github.com/MeylandMan/photos/blob/main/GitHUB.png)
-![](https://github.com/MeylandMan/photos/blob/main/premake5.png)
-![](https://github.com/MeylandMan/photos/blob/main/Cmake.png)
-![](https://github.com/MeylandMan/photos/blob/main/gamemaker.png)
+![Visual studio](https://github.com/MeylandMan/photos/blob/main/Visual_Studio.png)
+![Github](https://github.com/MeylandMan/photos/blob/main/GitHUB.png)
+![Premake](https://github.com/MeylandMan/photos/blob/main/premake5.png)
+![Cmake](https://github.com/MeylandMan/photos/blob/main/Cmake.png)
+![Gamemaker](https://github.com/MeylandMan/photos/blob/main/gamemaker.png)
 </br>
 
 ## EXPERIENCED
   ---
-![](https://github.com/MeylandMan/photos/blob/main/windows.png)
-![](https://github.com/MeylandMan/photos/blob/main/Java.png)
-![](https://github.com/MeylandMan/photos/blob/main/opengl.png)
+![Windows OS](https://github.com/MeylandMan/photos/blob/main/windows.png)
+![Java](https://github.com/MeylandMan/photos/blob/main/Java.png)
+![OpenGL](https://github.com/MeylandMan/photos/blob/main/opengl.png)
+![Visual Studio Code](https://github.com/MeylandMan/photos/blob/main/VSCode.png)
+![IntelliJ Idea IDE](https://github.com/MeylandMan/photos/blob/main/IntelliJ.png)
 </br>
   
 ## ENTRY-LEVEL
 ---
-![](https://github.com/MeylandMan/photos/blob/main/cs.png)
-![](https://github.com/MeylandMan/photos/blob/main/godot.png)
-![](https://github.com/MeylandMan/photos/blob/main/Cpp.png)
+![C#](https://github.com/MeylandMan/photos/blob/main/cs.png)
+![Godot](https://github.com/MeylandMan/photos/blob/main/godot.png)
+![C++](https://github.com/MeylandMan/photos/blob/main/Cpp.png)
+![Vite](https://github.com/MeylandMan/photos/blob/main/vite.svg)
+![Vitest](https://github.com/MeylandMan/photos/blob/main/vitest.svg)
+![TailwindCSS](https://github.com/MeylandMan/photos/blob/main/tailwindCSS.png)
+![React](https://github.com/MeylandMan/photos/blob/main/react.svg)
+![MongoDB](https://github.com/MeylandMan/photos/blob/main/mangodb.svg)
 </p>
 
 </br>
