@@ -6,6 +6,8 @@ import Experience from '@sections/Experience';
 import Projects from '@sections/Projects';
 import DevTools from '@sections/DevTools';
 import DevSkills from '@sections/DevSkills';
+import Footer from '@sections/Footer';
+
 /*
   <NavBar />
   <Hero/>
@@ -20,6 +22,7 @@ function App() {
     <>
     <DevTools />
     <DevSkills />
+    <Footer />
     </>
   );
 }
