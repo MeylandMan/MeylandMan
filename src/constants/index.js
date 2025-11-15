@@ -214,3 +214,36 @@ export const devSkills = [
 
     },
 ];
+
+export const footerLinks = [
+    {
+        id: 0,
+        name: "GitHub",
+        link: "https://github.com/MeylandMan",
+        icon: "",
+    },
+    {
+        id: 1,
+        name: "Mailto",
+        link: "mailto:m.dunooman0@gmail.com",
+        icon: "",
+    },
+    {
+        id: 2,
+        name: "LinkedIn",
+        link: "https://linkedin.com/in/Dunno-man0",
+        icon: "",
+    },
+    {
+        id: 3,
+        name: "Youtube",
+        link: "https://youtube.com/@dunno_man0",
+        icon: "",
+    },
+    {
+        id: 4,
+        name: "Twitter",
+        link: "https://twitter.com/@Dunno_man0",
+        icon: "",
+    }
+];
