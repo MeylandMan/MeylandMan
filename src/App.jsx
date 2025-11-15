@@ -4,6 +4,7 @@ import About from '@sections/About';
 import Formation from '@sections/Formation';
 import Experience from '@sections/Experience';
 import Projects from '@sections/Projects';
+import DevTools from '@sections//DevTools';
 
 /*
   <NavBar />
@@ -11,12 +12,13 @@ import Projects from '@sections/Projects';
   <About/>
   <Formation />
   <Experience />
+  <Projects />
 */
 
 function App() {
   return (
     <>
-    <Projects />
+    <DevTools />
     </>
   );
 }
