@@ -1,6 +1,7 @@
 import NavBar from '@sections/NavBar';
 import Hero from '@sections/Hero';
 import About from '@sections/About';
+import Formation from '@sections/Formation';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
     <NavBar />
     <Hero/>
     <About/>
+    <Formation />
     </>
   );
 }

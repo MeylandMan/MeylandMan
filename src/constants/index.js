@@ -1,7 +1,6 @@
-import { describe } from "vitest";
-
 export const formations = [
     {
+        id: 0,
         title: "Lycée Marianne",
         diploma: "DNB - Diplome National du Brevet",
         date: "Sept. 2020 - Jul. 2021",
@@ -10,6 +9,7 @@ export const formations = [
         alt: "Lycée Marianne Logo",
     },
     {
+        id: 1,
         title: "Lycée Marianne",
         diploma: "Baccalauréat Scientifique",
         date: "Sept. 2023 - Jul. 2024",
@@ -18,6 +18,7 @@ export const formations = [
         alt: "Lycée Marianne Logo",
     },
     {
+        id: 2,
         title: "Collège de Paris",
         diploma: "Bachelor Degree",
         date: "Oct. 2025 - today",
