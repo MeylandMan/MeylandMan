@@ -54,6 +54,7 @@ export const experiences = [
 
 export const projects = [
     {
+        id: 0,
         title: "Mabble",
         description: "A cross-platform GPU backend library for 2D/3D rendering, designed to provide a unified API for various graphics APIs such as DirectX, Vulkan, and Metal. ",
         stack: ["C++", "CMake", "OpenGL", "Vulkan", "DirectX 12", "Metal"],
@@ -64,6 +65,7 @@ export const projects = [
         alt: "Mabble Repository",
     },
     {
+        id: 1,
         title: "Raytracing",
         description: "A raytracing engine built from scratch in C++, created with \"Raytracing in One Weekend\" book by Peter Shirley.",
         stack: ["C++", "Premake"],
@@ -73,4 +75,142 @@ export const projects = [
         image: "",
         alt: "Raytracing Repository",
     }
+];
+
+export const devTools = [
+    {
+        id: 0,
+        name: "Visual Studio Code",
+        icon: "",
+
+    },
+    {
+        id:1,
+        name: "Visual Studio",
+        icon: "",
+
+    },
+    {
+        id: 2,
+        name: "IntelliJ IDEA",
+        icon: "",
+
+    },
+    {
+        id: 3,
+        name: "Git",
+        icon: "",
+
+    },
+    {
+        id: 4,
+        name: "Github",
+        icon: "",
+
+    },
+    {
+        id: 5,
+        name: "Notion",
+        icon: "",
+
+    },
+    {
+        id: 5,
+        name: "Gamemaker Studio 2",
+        icon: "",
+
+    },
+    {
+        id: 6,
+        name: "Godot Engine",
+        icon: "",
+
+    },
+];
+
+export const devSkills = [
+    {
+        id: 0,
+        name: "Java",
+        icon: "",
+
+    },
+    {
+        id: 1,
+        name: "C++",
+        icon: "",
+
+    },
+     {
+        id: 2,
+        name: "Premake",
+        icon: "",
+
+    },
+    {
+        id: 3,
+        name: "CMake",
+        icon: "",
+
+    },
+    {
+        id: 4,
+        name: "OpenGL",
+        icon: "",
+
+    },
+    {
+        id: 5,
+        name: "C#",
+        icon: "",
+
+    },
+    {
+        id: 6,
+        name: "HTML",
+        icon: "",
+
+    },
+    {
+        id: 7,
+        name: "CSS",
+        icon: "",
+
+    },
+    {
+        id: 8,
+        name: "JavaScript",
+        icon: "",
+
+    },
+    {
+        id: 9,
+        name: "Tailwind CSS",
+        icon: "",
+
+    },
+    {
+        id: 10,
+        name: "React",
+        icon: "",
+
+    },
+    {
+        id: 11,
+        name: "Vite",
+        icon: "",
+
+    },
+    {
+        id: 12,
+        name: "Vitest",
+        icon: "",
+
+    },
+    {
+        id: 13,
+        name: "MongoDB",
+        icon: "",
+
+    },
 ];
