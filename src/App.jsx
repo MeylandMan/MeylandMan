@@ -4,8 +4,8 @@ import About from '@sections/About';
 import Formation from '@sections/Formation';
 import Experience from '@sections/Experience';
 import Projects from '@sections/Projects';
-import DevTools from '@sections//DevTools';
-
+import DevTools from '@sections/DevTools';
+import DevSkills from '@sections/DevSkills';
 /*
   <NavBar />
   <Hero/>
@@ -19,6 +19,7 @@ function App() {
   return (
     <>
     <DevTools />
+    <DevSkills />
     </>
   );
 }
