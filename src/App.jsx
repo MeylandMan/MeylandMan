@@ -8,18 +8,16 @@ import DevTools from '@sections/DevTools';
 import DevSkills from '@sections/DevSkills';
 import Footer from '@sections/Footer';
 
-/*
-  <NavBar />
-  <Hero/>
-  <About/>
-  <Formation />
-  <Experience />
-  <Projects />
-*/
 
 function App() {
   return (
     <>
+    <NavBar />
+    <Hero/>
+    <About/>
+    <Formation />
+    <Experience />
+    <Projects />
     <DevTools />
     <DevSkills />
     <Footer />
