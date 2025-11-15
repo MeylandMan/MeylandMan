@@ -1,15 +1,14 @@
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
 import NavBar from '@sections/NavBar';
 import Hero from '@sections/Hero';
+import About from '@sections/About';
 
 function App() {
   return (
     <>
     <NavBar />
     <Hero/>
+    <About/>
     </>
-    
   );
 }
 
