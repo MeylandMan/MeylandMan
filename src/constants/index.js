@@ -30,7 +30,8 @@ export const formations = [
 
 export const experiences = [
     {
-        title: "Freelance Fullstack Developer",
+        id: 0,
+        title: "EVA STUDIO - Freelance Fullstack Developer",
         status: "Ongoing",
         date: "Aug. 2025 - today",
         location: "Île-de-France, France · Remote",
