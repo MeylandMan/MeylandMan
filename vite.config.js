@@ -8,4 +8,13 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  resolve: {
+    alias: {
+      '@assets': path.resolve(__dirname, './assets'),
+      '@constants': path.resolve(__dirname, './src/constants'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@sections': path.resolve(__dirname, './src/sections')
+    }
+  },
 })
