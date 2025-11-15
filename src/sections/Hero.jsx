@@ -1,3 +1,5 @@
+import Button from '@components/Button';
+
 const Hero = () => {
   return (
     <section>
@@ -5,9 +7,12 @@ const Hero = () => {
         <p>Hey, There ! <br/>I'm <strong>Meyland</strong></p>
         <h1>Discover my projects and skills in development.</h1>
 
-        <a href="#contact">
-            Contact me
-        </a>
+        <Button
+            href="#contact"
+            label="Contact me"
+            image=""
+            alt="Comment icon"
+        />
       </div>
     </section>
   );
