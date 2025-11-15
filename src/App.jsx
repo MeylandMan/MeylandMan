@@ -1,8 +1,12 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
+import NavBar from '@sections/NavBar';
 
 function App() {
   return (
+    <>
+    <NavBar />
+    
     <Canvas>
       {/* Add your 3D objects and components here */}
       <ambientLight intensity={0.5} />
@@ -15,6 +19,8 @@ function App() {
         <meshStandardMaterial color="hotpink" />
       </mesh>
     </Canvas>
+    </>
+    
   );
 }
 
