@@ -13,7 +13,7 @@ const Footer = () => {
                 </li>
             ))}
         </ul>
-        <p><a href="">Term of Service</a></p>
+        <p><a href="" target='_blank'>Term of Service</a></p>
     </footer>
     )
 }
