@@ -1,4 +1,4 @@
-import { text } from "stream/consumers";
+import { describe } from "vitest";
 
 export const formations = [
     {
@@ -47,5 +47,28 @@ export const experiences = [
                 text: "lead development projects from conception to deployment, ensuring timely delivery and adherence to client specifications.",
             }
         ]
+    }
+];
+
+export const projects = [
+    {
+        title: "Mabble",
+        description: "A cross-platform GPU backend library for 2D/3D rendering, designed to provide a unified API for various graphics APIs such as DirectX, Vulkan, and Metal. ",
+        stack: ["C++", "CMake", "OpenGL", "Vulkan", "DirectX 12", "Metal"],
+        link:"",
+        source:"https://github.com/MeylandMan/Mabble",
+
+        image: "",
+        alt: "Mabble Repository",
+    },
+    {
+        title: "Raytracing",
+        description: "A raytracing engine built from scratch in C++, created with \"Raytracing in One Weekend\" book by Peter Shirley.",
+        stack: ["C++", "Premake"],
+        link:"",
+        source:"https://github.com/MeylandMan/Raytracing",
+
+        image: "",
+        alt: "Raytracing Repository",
     }
 ];
