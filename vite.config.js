@@ -18,4 +18,9 @@ export default defineConfig({
       '@sections': path.resolve(__dirname, './src/sections')
     }
   },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./src/vitest.setup.js'],
+  }
 })
