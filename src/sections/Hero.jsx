@@ -1,4 +1,11 @@
+import { Leva } from 'leva';
+import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { useMediaQuery } from 'react-responsive';
+import { PerspectiveCamera } from '@react-three/drei';
+
 import Button from '@components/Button';
+import { Desk } from '@components/Desk.jsx';
 
 const Hero = () => {
   return (
