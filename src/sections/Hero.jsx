@@ -9,10 +9,15 @@ import { Desk } from '@components/Desk.jsx';
 
 const Hero = () => {
   return (
-    <section>
-      <div>
-        <p>Hey, There ! <br/>I'm <strong>Meyland</strong></p>
-        <h1>Discover my projects and skills in development.</h1>
+    <section className="min-h-screen w-full flex flex-col relative" id="/">
+      <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
+        <p className="sm:text-3xl text-xl font-medium text-white text-center">
+          Hey, There ! <br/>I'm <strong>Meyland </strong>
+          <span className="waving-hand">👋</span>
+        </p>
+        <h1 className="hero-tag text-gray-gradient">
+          Discover my projects and <br/>skills in development.
+        </h1>
 
         <Button
             href="#contact"

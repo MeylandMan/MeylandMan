@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.5.3 ./public/models/desk.glb
 
 import { useGLTF } from '@react-three/drei'
 
-export function Model(props) {
+export function Desk(props) {
   const { nodes, materials } = useGLTF('/desk.glb')
   return (
     <group {...props} dispose={null}>
