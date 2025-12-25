@@ -9,18 +9,22 @@ import DevSkills from '@sections/DevSkills';
 import Footer from '@sections/Footer';
 
 
+/*
+<Hero/>
+<About/>
+<Formation />
+<Experience />
+<Projects />
+<DevTools />
+<DevSkills />
+<Footer />
+*/
+
 function App() {
   return (
     <>
     <NavBar />
     <Hero/>
-    <About/>
-    <Formation />
-    <Experience />
-    <Projects />
-    <DevTools />
-    <DevSkills />
-    <Footer />
     </>
   );
 }

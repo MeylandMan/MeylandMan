@@ -1,10 +1,15 @@
-const Button = ({ href, label, image, alt }) => {
+const Button = ({ name, isBeam = false, containerClass }) => {
   return (
-    <a href={href}>
-        <img src={image} alt={alt} aria-hidden="true"/>
-        {label}
-    </a>
+    <button className={`btn ${containerClass}`}>
+      {isBeam && (
+        <span className="relative flex h-3 w-3">
+          <span className="btn-ping"></span>
+          <span className="btn-ping-dot"></span>
+        </span>
+      )}
+      {name}
+    </button>
   );
-}
+};
 
 export default Button;
