@@ -10,7 +10,9 @@ const Hero = () => {
         <Button
             href="#contact"
             label="Contact me"
-            image=""
+            image="/assets/comment-icon.svg"
+            width={32}
+            height={32}
             alt="Comment icon"
         />
       </div>
