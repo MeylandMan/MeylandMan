@@ -1,3 +1,49 @@
+export const leftNavLinks = [
+    {
+        id: 0,
+        name: "About",
+        href: "#about",
+    },
+    {
+        id: 1,
+        name: "Formation",
+        href: "#formation",
+    },
+    {
+        id: 2,
+        name: "Experience",
+        href: "#experience",
+    },
+    {
+        id: 3,
+        name: "Projects",
+        href: "#projects",
+    },
+    {
+        id: 4,
+        name: "Dev Tools",
+        href: "#devtools",
+    },
+    {
+        id: 5,
+        name: "Skills",
+        href: "#devskills",
+    }
+];
+
+export const rightNavLinks = [
+    {
+        id: 0,
+        name: "Get CV",
+        href: "TODO:ADD CV HERE",
+    },
+    {
+        id: 1,
+        name: "Contact",
+        href: "#contact",
+    }
+];
+
 export const formations = [
     {
         id: 0,
