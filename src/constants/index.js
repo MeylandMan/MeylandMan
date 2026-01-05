@@ -184,85 +184,96 @@ export const devSkills = [
     {
         id: 0,
         name: "Java",
-        icon: "",
+        icon: "java.png",
 
     },
     {
         id: 1,
         name: "C++",
-        icon: "",
+        icon: "cpp.png",
 
     },
      {
         id: 2,
         name: "Premake",
-        icon: "",
+        icon: "premake.png",
 
     },
     {
         id: 3,
         name: "CMake",
-        icon: "",
+        icon: "cmake.png",
 
     },
     {
         id: 4,
         name: "OpenGL",
-        icon: "",
+        icon: "opengl.png",
 
     },
     {
         id: 5,
         name: "C#",
-        icon: "",
+        icon: "cs.png",
 
     },
     {
         id: 6,
         name: "HTML",
-        icon: "",
+        icon: "html.png",
 
     },
     {
         id: 7,
         name: "CSS",
-        icon: "",
+        icon: "css.png",
 
     },
     {
         id: 8,
         name: "JavaScript",
-        icon: "",
+        icon: "javascript.png",
 
     },
     {
         id: 9,
         name: "Tailwind CSS",
-        icon: "",
+        icon: "tailwindcss.png",
 
     },
     {
         id: 10,
         name: "React",
-        icon: "",
+        icon: "react.png",
 
     },
     {
         id: 11,
         name: "Vite",
-        icon: "",
+        icon: "vite.svg",
 
     },
     {
         id: 12,
-        name: "Vitest",
-        icon: "",
+        name: "NextJS",
+        icon: "nextjs.svg",
 
     },
     {
         id: 13,
+        name: "Vitest",
+        icon: "vitest.svg",
+
+    },
+    {
+        id: 14,
+        name: "MySQL",
+        icon: "mysql.png",
+    },
+    {
+        id: 15,
         name: "MongoDB",
-        icon: "",
+        icon: "mongodb.png",
 
     },
 ];

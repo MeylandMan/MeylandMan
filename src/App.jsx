@@ -16,7 +16,7 @@ import Footer from '@sections/Footer';
 <Experience />
 <Projects />
 
-<DevSkills />
+
 <Footer />
 */
 
@@ -26,6 +26,7 @@ function App() {
     <NavBar />
     <Hero/>
     <DevTools />
+    <DevSkills />
     </>
   );
 }
