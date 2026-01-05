@@ -33,11 +33,6 @@ const Hero = () => {
         </h1>
       </div>
 
-      <div className="absolute bottom-7 left-0 right-0 w-full z-10 c-space">
-        <a href="#contact" className="w-fit">
-          <Button name="Contact me !" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
-        </a>
-      </div>
       <div className="w-full h-full absolute inset-0">
         <Canvas className="w-full h-full" shadows dpr={[1, 2]}>
           <Suspense fallback={null}>
@@ -67,6 +62,12 @@ const Hero = () => {
             </Suspense>
           </Canvas>
       </div> 
+
+      <div className="absolute bottom-7 left-0 right-0 w-full z-10 c-space">
+        <a href="#contact" className="w-fit">
+          <Button name="Contact me !" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
+        </a>
+      </div>
     </section>
   );
 }

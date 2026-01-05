@@ -84,24 +84,13 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
 export const experiences = [
     {
         id: 0,
-        title: "EVA STUDIO - Freelance Fullstack Developer",
-        status: "Ongoing",
-        date: "Aug. 2025 - today",
+        name: "EVA STUDIO",
+        position: "Freelance Backend Developer",
+        duration: "Aug. 2025 - present",
         location: "Île-de-France, France · Remote",
-        description: [
-            {
-                text: "Developing web applications for various clients using modern technologies such as React, Node.js, and Tailwind CSS.",
-            },
-            {
-                text: "Collaborating with clients to gather requirements, provide updates, and ensure satisfaction with the final product.",
-            },
-            {
-                text: "maintaining and updating existing applications to improve performance, fix bugs, and add new features.",
-            },
-            {
-                text: "lead development projects from conception to deployment, ensuring timely delivery and adherence to client specifications.",
-            }
-        ]
+        title: "My work involves developing and maintaining backend systems for various applications, ensuring robust performance and scalability.",
+        icon: "/assets/experiences/eva-studio.png",
+        animation: "Freelance",
     }
 ];
 
