@@ -89,8 +89,7 @@ export const experiences = [
         duration: "Aug. 2025 - present",
         location: "Île-de-France, France · Remote",
         title: "My work involves developing and maintaining backend systems for various applications, ensuring robust performance and scalability.",
-        icon: "/assets/experiences/eva-studio.png",
-        animation: "Freelance",
+        icon: "/assets/experiences/eva-studio.png"
     }
 ];
 
