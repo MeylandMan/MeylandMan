@@ -134,50 +134,49 @@ export const devTools = [
     {
         id: 0,
         name: "Visual Studio Code",
-        icon: "",
+        icon: "vs-code.png",
 
     },
     {
         id:1,
         name: "Visual Studio",
-        icon: "",
+        icon: "visual-studio.png",
 
     },
     {
         id: 2,
         name: "IntelliJ IDEA",
-        icon: "",
+        icon: "intellij.png",
 
     },
     {
         id: 3,
         name: "Git",
-        icon: "",
+        icon: "git.png",
 
     },
     {
         id: 4,
         name: "Github",
-        icon: "",
+        icon: "github.webp",
 
     },
     {
         id: 5,
         name: "Notion",
-        icon: "",
-
-    },
-    {
-        id: 5,
-        name: "Gamemaker Studio 2",
-        icon: "",
+        icon: "notion.png",
 
     },
     {
         id: 6,
-        name: "Godot Engine",
-        icon: "",
+        name: "Gamemaker Studio 2",
+        icon: "gamemaker-studio-2.png",
 
+    },
+    {
+        id: 7,
+        name: "Godot Engine",
+        icon: "godot.png",
     },
 ];
 

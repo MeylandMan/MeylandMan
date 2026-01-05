@@ -6,7 +6,7 @@ const DevTools = () => {
         <h2>Dev Tools</h2>
         <div>
             {devTools.map((tool) => (
-                <img key={tool.id} src={tool.icon} alt={tool.name} />
+                <img key={tool.id} src={`/assets/tools/${tool.icon}`} alt={tool.name} width={64} height={64} />
             ))}
         </div>
     </section>
