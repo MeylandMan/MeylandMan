@@ -14,7 +14,7 @@ const sanitize = (val) => {
   return s;
 };
 
-const getEnv = (name) => {
+export const getEnv = (name) => {
   const candidates = [];
   // Vite exposes import.meta.env in the bundled client — access it safely
   try {
@@ -66,6 +66,14 @@ export const initEmailJS = (publicKey = PUBLIC_KEY) => {
       if (/['";\s]/.test(pk)) {
         console.warn("Public key contains suspicious characters (quotes/semicolon/whitespace). Check your .env formatting.");
       }
+
+      // Also print presence (masked) of other required env variables to help debugging
+      const mask = (v) => (v ? `${String(v).slice(0, 6)}...${String(v).slice(-4)}` : 'MISSING');
+      console.info(`EmailJS env: SERVICE_ID=${SERVICE_ID ? mask(SERVICE_ID) : 'MISSING'}, TEMPLATE_ADMIN=${TEMPLATE_ADMIN ? mask(TEMPLATE_ADMIN) : 'MISSING'}, TEMPLATE_USER=${TEMPLATE_USER ? mask(TEMPLATE_USER) : 'MISSING'}, ADMIN_EMAIL=${ADMIN_EMAIL ? ADMIN_EMAIL : 'MISSING'}`);
+
+      if (!SERVICE_ID) console.warn("SERVICE_ID missing. Check VITE_SERVICE_ID in your .env and restart the dev server.");
+      if (!TEMPLATE_ADMIN) console.warn("TEMPLATE_ADMIN missing. Check VITE_TEMPLATE_ADMIN in your .env and restart the dev server.");
+      if (!TEMPLATE_USER) console.warn("TEMPLATE_USER missing. Check VITE_TEMPLATE_USER in your .env and restart the dev server.");
     } catch (e) {
       // ignore masking errors
     }
@@ -89,7 +97,12 @@ export const sendContactEmail = async (templateParams = {}, opts = {}) => {
   }
 
   try {
-    const res = await send(serviceId, templateId, templateParams);
+    // normalize common template fields so templates receive expected names
+    const paramsToSend = { ...templateParams };
+    if (paramsToSend.email && !paramsToSend.from_email) paramsToSend.from_email = paramsToSend.email;
+    if (paramsToSend.name && !paramsToSend.from_name) paramsToSend.from_name = paramsToSend.name;
+
+    const res = await send(serviceId, templateId, paramsToSend);
     return res;
   } catch (err) {
     console.error("EmailJS send() error:", err);
