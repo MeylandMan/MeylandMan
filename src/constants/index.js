@@ -22,12 +22,12 @@ export const leftNavLinks = [
     {
         id: 4,
         name: "Dev Tools",
-        href: "#devtools",
+        href: "#dev-tools",
     },
     {
         id: 5,
         name: "Skills",
-        href: "#devskills",
+        href: "#dev-skills",
     }
 ];
 
