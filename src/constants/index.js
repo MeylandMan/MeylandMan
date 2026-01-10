@@ -98,7 +98,7 @@ export const projects = [
         id: 0,
         title: "Mabble",
         description: "A cross-platform GPU backend library for 2D/3D rendering, designed to provide a unified API for various graphics APIs such as DirectX, Vulkan, and Metal. ",
-        stack: ["C++", "CMake", "OpenGL", "Vulkan", "DirectX 12", "Metal"],
+        stack: ["C++", "CMake", "OpenGL"],
         link:"",
         source:"https://github.com/MeylandMan/Mabble",
 

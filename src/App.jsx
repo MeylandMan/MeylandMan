@@ -12,7 +12,7 @@ import Footer from '@sections/Footer';
 /*
 <About/>
 <Experience />
-<Projects />
+
 <Footer />
 */
 
@@ -23,6 +23,7 @@ function App() {
     <Hero/>
     <Formation />
     <Experience />
+    <Projects />
     <DevTools />
     <DevSkills />
     </>
