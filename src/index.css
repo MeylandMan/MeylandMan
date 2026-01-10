@@ -85,7 +85,7 @@ body {
   }
 
   .carousel-slider::before,
-  .carousel-slider::after{
+  .carousel-slider::after {
     @apply absolute top-0 bottom-0 w-40 z-20 pointer-events-none;
     content: "";
   }

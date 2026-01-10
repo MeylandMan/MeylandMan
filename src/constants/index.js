@@ -51,25 +51,25 @@ export const formations = [
         diploma: "DNB - Diplome National du Brevet",
         date: "Sept. 2020 - Jul. 2021",
 
-        image: "",
+        image: "marianne-logo.png",
         alt: "Lycée Marianne Logo",
     },
     {
         id: 1,
         title: "Lycée Marianne",
-        diploma: "Baccalauréat Scientifique",
+        diploma: "Baccalauréat",
         date: "Sept. 2023 - Jul. 2024",
 
-        image: "",
+        image: "marianne-logo.png",
         alt: "Lycée Marianne Logo",
     },
     {
         id: 2,
         title: "Collège de Paris",
-        diploma: "Bachelor Degree",
-        date: "Oct. 2025 - today",
+        diploma: "Bachelor's degree in Information Systems",
+        date: "Oct. 2025 - present",
 
-        image: "",
+        image: "cdp-logo.webp",
         alt: "Collège de Paris Logo",
     }
 ];
@@ -89,7 +89,7 @@ export const experiences = [
         duration: "Aug. 2025 - present",
         location: "Île-de-France, France · Remote",
         title: "My work involves developing and maintaining backend systems for various applications, ensuring robust performance and scalability.",
-        icon: "/assets/experiences/eva-studio.png"
+        icon: "eva-studio.png"
     }
 ];
 

@@ -11,11 +11,8 @@ import Footer from '@sections/Footer';
 
 /*
 <About/>
-<Formation />
 <Experience />
 <Projects />
-
-
 <Footer />
 */
 
@@ -24,6 +21,7 @@ function App() {
     <>
     <NavBar />
     <Hero/>
+    <Formation />
     <Experience />
     <DevTools />
     <DevSkills />
