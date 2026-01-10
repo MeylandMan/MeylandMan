@@ -80,9 +80,8 @@ body {
   }
 
   .carousel-slider {
-    @apply bg-transparent shadow-none mx-auto overflow-hidden relative border-0;
+    @apply bg-transparent shadow-none overflow-hidden relative border-0;
     height: var(--carousel-slide-h);
-    max-width: var(--carousel-visible-w);
   }
 
   .carousel-slider::before,
@@ -92,15 +91,15 @@ body {
   }
   .carousel-slider::before {
     left: 0;
-    background: linear-gradient(to right, rgba(1,1,3,1) 0%, rgba(1,1,3,0) 80%);
+    background: linear-gradient(to right, rgba(1,1,3,1) 30%, rgba(1,1,3,0) 100%);
   }
   .carousel-slider::after {
     right: 0;
-    background: linear-gradient(to left, rgba(1,1,3,1) 0%, rgba(1,1,3,0) 80%);
+    background: linear-gradient(to left, rgba(1,1,3,1) 30%, rgba(1,1,3,0) 100%);
   }
 
   .slide-track {
-    @apply flex items-center gap-0;
+    @apply flex items-center gap-2.5;
     width: max-content;
     will-change: transform;
   }
