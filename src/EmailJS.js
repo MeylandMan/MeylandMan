@@ -1,41 +1,77 @@
-/*
- * EmailJS helper utilities (customized for your env vars)
- * - Uses @emailjs/browser (modern EmailJS SDK)
- * - Reads the following env vars (non-Vite names supported):
- *   - SERVICE_ID         (required)
- *   - TEMPLATE_ADMIN     (required)
- *   - TEMPLATE_USER      (required)
- *   - ADMIN_EMAIL        (required for admin sends)
- *   - (optional) PUBLIC_KEY / VITE_EMAILJS_PUBLIC_KEY
- *
- * Expected behavior:
- * - sendAdminNotification: sends your message to ADMIN_EMAIL using TEMPLATE_ADMIN
- * - sendUserConfirmation: sends a confirmation mail to the sender using TEMPLATE_USER
- * - sendContactFlow: convenience that sends admin first, then (if possible) user
- *
- * Note: If you're using Vite and want values available in the client bundle, ensure env vars are prefixed with VITE_ or injected at build time.
- * Install dependency: npm install @emailjs/browser
- */
-
 import { init, send, sendForm } from "@emailjs/browser";
 
-const PUBLIC_KEY = process.env.PUBLIC_KEY;
-const SERVICE_ID = process.env.SERVICE_ID;
-const TEMPLATE_ADMIN = process.env.TEMPLATE_ADMIN;
-const TEMPLATE_USER = process.env.TEMPLATE_USER;
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+// Safe environment access compatible with Vite (import.meta.env) and Node (process.env)
+// Also sanitize common formatting issues (quotes, trailing semicolons, whitespace)
+const sanitize = (val) => {
+  if (typeof val !== "string") return val;
+  let s = val.trim();
+  // remove surrounding quotes
+  if ((s.startsWith("'") && s.endsWith("'")) || (s.startsWith('"') && s.endsWith('"'))) {
+    s = s.slice(1, -1).trim();
+  }
+  // remove trailing semicolon
+  if (s.endsWith(";")) s = s.slice(0, -1).trim();
+  return s;
+};
+
+const getEnv = (name) => {
+  const candidates = [];
+  // Vite exposes import.meta.env in the bundled client — access it safely
+  try {
+    const meta = import.meta && import.meta.env;
+    if (meta) {
+      candidates.push(
+        meta[name],
+        meta[`VITE_${name}`],
+        meta[`VITE_${name.toUpperCase()}`],
+        meta[`VITE_EMAILJS_${name.toUpperCase()}`]
+      );
+    }
+  } catch (e) {
+    // import.meta may not be accessible in some bundlers/environments; ignore
+  }
+
+  // Fallback for Node.js environments
+  if (typeof process !== "undefined" && process.env) {
+    candidates.push(process.env[name], process.env[`VITE_${name}`]);
+  }
+
+  const found = candidates.find((v) => v !== undefined && v !== null);
+  return sanitize(found);
+};
+
+const PUBLIC_KEY = getEnv("PUBLIC_KEY") || getEnv("EMAILJS_PUBLIC_KEY") || getEnv("VITE_EMAILJS_PUBLIC_KEY") || null;
+const SERVICE_ID = getEnv("SERVICE_ID") || null;
+const TEMPLATE_ADMIN = getEnv("TEMPLATE_ADMIN") || null;
+const TEMPLATE_USER = getEnv("TEMPLATE_USER") || null;
+const ADMIN_EMAIL = getEnv("ADMIN_EMAIL") || null;
 
 /**
  * Initialize EmailJS (optional)
  */
 export const initEmailJS = (publicKey = PUBLIC_KEY) => {
-  if (!publicKey) {
+  const pk = sanitize(publicKey || PUBLIC_KEY);
+  if (!pk) {
     console.warn(
-      "No EmailJS public key provided. If you rely on client-side init, set PUBLIC_KEY or VITE_EMAILJS_PUBLIC_KEY or call initEmailJS(publicKey)."
+      "No EmailJS public key provided. If you rely on client-side init, set VITE_PUBLIC_KEY or VITE_EMAILJS_PUBLIC_KEY or call initEmailJS(publicKey)."
     );
     return;
   }
-  init(publicKey);
+
+  // Dev-only: show masked key information and warn about suspicious chars
+  if (typeof process !== "undefined" && process.env && process.env.NODE_ENV !== "production") {
+    try {
+      const masked = `${pk.slice(0, 6)}...${pk.slice(-4)}`;
+      console.info(`EmailJS public key detected (masked): ${masked} (length: ${pk.length})`);
+      if (/['";\s]/.test(pk)) {
+        console.warn("Public key contains suspicious characters (quotes/semicolon/whitespace). Check your .env formatting.");
+      }
+    } catch (e) {
+      // ignore masking errors
+    }
+  }
+
+  init(pk);
 };
 
 /**
