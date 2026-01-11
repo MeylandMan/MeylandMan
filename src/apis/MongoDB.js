@@ -23,3 +23,25 @@ export async function run() {
 if (typeof window === 'undefined') {
   run().catch(console.dir);
 }
+
+
+export async function getDocument(collectionName, query) {
+  const uri = process.env.VITE_MONGODB_URI;
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  });
+
+  try {
+    await client.connect();
+    const database = client.db(process.env.VITE_MONGODB_CLUSTER);
+    const collection = database.collection(collectionName);
+    const document = await collection.findOne(query);
+    return document;
+  } finally {
+    await client.close();
+  }
+}

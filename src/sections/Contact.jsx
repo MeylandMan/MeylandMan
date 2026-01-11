@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Button from "@components/Button";
-import { sendContactFlow, initEmailJS } from "../EmailJS";
+import { sendContactFlow, initEmailJS } from "@apis/EmailJS";
 
 const isValidEmail = (email) => {
   // simple, practical email validation
