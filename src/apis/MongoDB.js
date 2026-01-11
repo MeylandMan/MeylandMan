@@ -19,14 +19,44 @@ export async function run() {
   }
 }
 
-// Only auto-run in Node (not when imported by browser code)
-if (typeof window === 'undefined') {
+// Only auto-run when executed directly as a script (not when imported)
+import { fileURLToPath } from 'url';
+if (typeof window === 'undefined' && process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   run().catch(console.dir);
 }
 
-
-export async function getDocument(collectionName, query) {
+export async function getMongoDocument(query) {
   const uri = process.env.VITE_MONGODB_URI;
+  if (!uri) throw new Error('VITE_MONGODB_URI not set');
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  });
+
+  try {
+    await client.connect();
+    const database = client.db(process.env.VITE_MONGODB_CLUSTER);
+    const collection = database.collection(process.env.VITE_MONGODB_COLLECTION);
+    const document = await collection.findOne(query);
+    return document;
+  } finally {
+    await client.close();
+  }
+}
+
+/**
+ * Get all documents from a collection (server-side helper)
+ * @param {string} collectionName
+ * @param {object} query
+ * @returns {Promise<Array>}
+ */
+export async function getCollectionDocuments(collectionName, query = {}) {
+  const uri = process.env.VITE_MONGODB_URI;
+  if (!uri) throw new Error('VITE_MONGODB_URI not set');
+
   const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
@@ -39,8 +69,8 @@ export async function getDocument(collectionName, query) {
     await client.connect();
     const database = client.db(process.env.VITE_MONGODB_CLUSTER);
     const collection = database.collection(collectionName);
-    const document = await collection.findOne(query);
-    return document;
+    const documents = await collection.find(query).toArray();
+    return documents;
   } finally {
     await client.close();
   }
