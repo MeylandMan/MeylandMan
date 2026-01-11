@@ -65,6 +65,16 @@ app.get('/api/experiences', async (req, res) => {
   }
 });
 
+app.get('/api/projects', async (req, res) => {
+  try {
+    const docs = await getCollectionDocuments('projects');
+    res.json(docs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 // Dev-only debug endpoint: list collections and counts
 app.get('/api/debug', async (req, res) => {
   try {

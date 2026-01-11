@@ -19,31 +19,6 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
   };
 };
 
-export const projects = [
-    {
-        id: 0,
-        title: "Mabble",
-        description: "A cross-platform GPU backend library for 2D/3D rendering, designed to provide a unified API for various graphics APIs such as DirectX, Vulkan, and Metal. ",
-        stack: ["C++", "CMake", "OpenGL"],
-        link:"",
-        source:"https://github.com/MeylandMan/Mabble",
-
-        image: "",
-        alt: "Mabble Repository",
-    },
-    {
-        id: 1,
-        title: "Raytracing",
-        description: "A raytracing engine built from scratch in C++, created with \"Raytracing in One Weekend\" book by Peter Shirley.",
-        stack: ["C++", "Premake"],
-        link:"",
-        source:"https://github.com/MeylandMan/Raytracing",
-
-        image: "",
-        alt: "Raytracing Repository",
-    }
-];
-
 export const devTools = [
     {
         id: 0,
