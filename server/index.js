@@ -45,6 +45,16 @@ app.get('/api/leftNavLinks', async (req, res) => {
   }
 });
 
+app.get('/api/formations', async (req, res) => {
+  try {
+    const docs = await getCollectionDocuments('formations');
+    res.json(docs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 // Dev-only debug endpoint: list collections and counts
 app.get('/api/debug', async (req, res) => {
   try {

@@ -12,36 +12,6 @@ export const rightNavLinks = [
     }
 ];
 
-export const formations = [
-    {
-        id: 0,
-        title: "Lycée Marianne",
-        diploma: "DNB - Diplome National du Brevet",
-        date: "Sept. 2020 - Jul. 2021",
-
-        image: "marianne-logo.png",
-        alt: "Lycée Marianne Logo",
-    },
-    {
-        id: 1,
-        title: "Lycée Marianne",
-        diploma: "Baccalauréat",
-        date: "Sept. 2023 - Jul. 2024",
-
-        image: "marianne-logo.png",
-        alt: "Lycée Marianne Logo",
-    },
-    {
-        id: 2,
-        title: "Collège de Paris",
-        diploma: "Bachelor's degree in Information Systems",
-        date: "Oct. 2025 - present",
-
-        image: "cdp-logo.webp",
-        alt: "Collège de Paris Logo",
-    }
-];
-
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
   return {
     deskScale: isSmall ? 0.2 : isMobile ? 0.24 : 0.24,
