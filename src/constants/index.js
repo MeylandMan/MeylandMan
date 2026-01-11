@@ -1,35 +1,3 @@
-export const leftNavLinks = [
-    {
-        id: 0,
-        name: "About",
-        href: "#about",
-    },
-    {
-        id: 1,
-        name: "Formation",
-        href: "#formation",
-    },
-    {
-        id: 2,
-        name: "Experience",
-        href: "#experience",
-    },
-    {
-        id: 3,
-        name: "Projects",
-        href: "#projects",
-    },
-    {
-        id: 4,
-        name: "Dev Tools",
-        href: "#dev-tools",
-    },
-    {
-        id: 5,
-        name: "Skills",
-        href: "#dev-skills",
-    }
-];
 
 export const rightNavLinks = [
     {

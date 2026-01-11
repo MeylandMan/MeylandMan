@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 
-import { leftNavLinks } from '@constants/index.js';
 
-
-const NavItems = ({ links = leftNavLinks, onClick = () => {} }) => (
+const NavItems = ({ links, onClick = () => {} }) => (
     <div className="flex gap-8 max-md:flex-col max-md:gap-4 max-md:bg-black max-md:p-4 max-md:rounded-md">
         <ul className="flex flex-col items-center gap-4 md:flex-row md:gap-6 relative z-20">
             {links.map((item) => (
@@ -20,19 +18,40 @@ const NavItems = ({ links = leftNavLinks, onClick = () => {} }) => (
 const NavBar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [serverLinks, setServerLinks] = useState(null);
+    const [serverLinks, setServerLinks] = useState([]);
+    const [loadingLinks, setLoadingLinks] = useState(true);
+    const [linksError, setLinksError] = useState(null);
 
     useEffect(() => {
-        fetch('/api/leftNavLinks')
-            .then((res) => {
-                if (!res.ok) throw new Error('Network response not ok');
-                return res.json();
-            })
-            .then((data) => {
-                if (Array.isArray(data) && data.length > 0) setServerLinks(data);
-            })
-            .catch((err) => console.debug('Fetch /api/leftNavLinks failed:', err.message));
-    }, []);
+    fetch('/api/leftNavLinks')
+        .then(res => {
+        if (!res.ok) throw new Error('Network response not ok');
+        console.debug(res);
+        return res.json();
+        })
+        .then(data => {
+        let links = [];
+        if (Array.isArray(data) && data.length) {
+            links = data;
+        } else if (Array.isArray(data?.documents) && data.documents.length) {
+            links = data.documents;
+        } else if (data?.links && Array.isArray(data.links) && data.links.length) {
+            links = data.links;
+        }
+        links = links.map((d, i) => ({
+            id: (d._id && d._id.toString?.()) || d.id || String(i),
+            name: d.name || d.title || 'Untitled',
+            href: d.href || d.url || '#'
+        }));
+
+        if (links.length) setServerLinks(links);
+        })
+        .catch(err => {
+        console.debug('Fetch /api/leftNavLinks failed:', err.message);
+        setLinksError(err.message);
+        })
+        .finally(() => setLoadingLinks(false));
+    }, [serverLinks]);
 
     const toggleMenu = () => setIsOpen(!isOpen);
     const closeMenu = () => setIsOpen(false);
@@ -53,7 +72,7 @@ const NavBar = () => {
                     </button>
 
                     <nav className="md:flex hidden">
-                        <NavItems links={serverLinks ?? leftNavLinks} />
+                        <NavItems links={serverLinks} />
                     </nav>
                 </div>
             </div>
@@ -61,7 +80,7 @@ const NavBar = () => {
 
             <div className={`absolute left-0 right-0 bg-black-200 backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto md:hidden block ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
                 <nav>
-                    <NavItems links={serverLinks ?? leftNavLinks} onClick={closeMenu} />
+                    <NavItems links={serverLinks} onClick={closeMenu} />
                 </nav>
             </div>
         </header>

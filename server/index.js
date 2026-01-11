@@ -7,7 +7,34 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Dedicated endpoint for leftNavLinks collection
+app.get('/api/doc', async (req, res) => {
+  const collectionName = req.query.collection;
+  const queryParam = req.query.query;
+
+  if (!collectionName) {
+    return res.status(400).json({ ok: false, error: 'Missing collection query parameter' });
+  }
+
+  let query = {};
+  if (queryParam) {
+    try {
+      query = JSON.parse(queryParam);
+    } catch (err) {
+      return res.status(400).json({ ok: false, error: 'Invalid JSON in query parameter' });
+    }
+  }
+
+  try {
+    const documents = await getCollectionDocuments(collectionName, query);
+    res.json({ ok: true, documents });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// Dedicated endpoint for collections
+
 app.get('/api/leftNavLinks', async (req, res) => {
   try {
     const docs = await getCollectionDocuments('leftNavLinks');
