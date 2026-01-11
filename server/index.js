@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { getMongoDocument, getCollectionDocuments } from '@apis/MongoDB.js';
+import { getMongoDocument, getCollectionDocuments } from '../src/apis/MongoDB.js';
 
 dotenv.config();
 
@@ -26,10 +26,20 @@ app.get('/api/doc', async (req, res) => {
 // Dedicated endpoint for leftNavLinks collection
 app.get('/api/leftNavLinks', async (req, res) => {
   try {
-    // collection name can be configured via env, else use 'leftNavLinks'
-    const collectionName = process.env.VITE_MONGODB_COLLECTION || 'leftNavLinks';
+    const collectionName = 'leftNavLinks';
     const docs = await getCollectionDocuments(collectionName);
     res.json(docs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// Dev-only debug endpoint: list collections and counts
+app.get('/api/debug', async (req, res) => {
+  try {
+    const info = await listCollectionsInfo();
+    res.json({ ok: true, collections: info });
   } catch (err) {
     console.error(err);
     res.status(500).json({ ok: false, error: err.message });

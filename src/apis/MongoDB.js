@@ -75,3 +75,34 @@ export async function getCollectionDocuments(collectionName, query = {}) {
     await client.close();
   }
 }
+
+/**
+ * List collections and counts (dev helper)
+ * @returns {Promise<Array<{name:string,count:number}>>}
+ */
+export async function listCollectionsInfo() {
+  const uri = process.env.VITE_MONGODB_URI;
+  if (!uri) throw new Error('VITE_MONGODB_URI not set');
+
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  });
+
+  try {
+    await client.connect();
+    const database = client.db(process.env.VITE_MONGODB_CLUSTER);
+    const collections = await database.listCollections().toArray();
+    const results = [];
+    for (const c of collections) {
+      const count = await database.collection(c.name).countDocuments();
+      results.push({ name: c.name, count });
+    }
+    return results;
+  } finally {
+    await client.close();
+  }
+}
