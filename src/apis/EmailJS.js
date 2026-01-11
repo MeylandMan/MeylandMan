@@ -40,6 +40,7 @@ export const getEnv = (name) => {
   return sanitize(found);
 };
 
+
 const PUBLIC_KEY = getEnv("PUBLIC_KEY") || getEnv("EMAILJS_PUBLIC_KEY") || getEnv("VITE_EMAILJS_PUBLIC_KEY") || null;
 const SERVICE_ID = getEnv("SERVICE_ID") || null;
 const TEMPLATE_ADMIN = getEnv("TEMPLATE_ADMIN") || null;
