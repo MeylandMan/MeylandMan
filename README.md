@@ -37,23 +37,3 @@
 ![React](https://github.com/MeylandMan/photos/blob/main/react.svg)
 ![MongoDB](https://github.com/MeylandMan/photos/blob/main/mangodb.svg)
 </p>
-
-</br>
-## Development
-
-- Start the backend API server (uses Node + Express):
-
-```bash
-# copy .env.example to .env and fill in credentials
-cp .env.example .env
-# then:
-npm run start:server
-```
-
-- In a separate terminal start the Vite dev server:
-
-```bash
-npm run dev
-```
-
-The Vite dev server proxies requests starting with `/api` to `http://localhost:3000` by default, so client code can `fetch('/api/leftNavLinks')` and the request will be forwarded to the backend. The dedicated `GET /api/leftNavLinks` endpoint will return the documents in your `leftNavLinks` collection from the `main-portofolio` database.
