@@ -75,6 +75,26 @@ app.get('/api/projects', async (req, res) => {
   }
 });
 
+app.get('/api/devTools', async (req, res) => {
+  try {
+    const docs = await getCollectionDocuments('devTools');
+    res.json(docs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+app.get('/api/devSkills', async (req, res) => {
+  try {
+    const docs = await getCollectionDocuments('devSkills');
+    res.json(docs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 // Dev-only debug endpoint: list collections and counts
 app.get('/api/debug', async (req, res) => {
   try {
