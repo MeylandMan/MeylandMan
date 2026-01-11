@@ -1,19 +1,22 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
+
 export async function run() {
-  const uri = process.env.VITE_MONGODB_URI;
-  const client = new MongoClient(uri, {
+
+  const client = new MongoClient(process.env.VITE_MONGODB_URI, {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
       deprecationErrors: true,
     },
   });
-
+  
   try {
     await client.connect();
-    await client.db(process.env.VITE_MONGODB_CLUSTER).command({ ping: 1 });
-    console.log('Pinged your deployment. You successfully connected to MongoDB!');
+    console.log("Connected successfully to server");
+
+  } catch (e) {
+    console.error(e);
   } finally {
     await client.close();
   }
@@ -25,28 +28,6 @@ if (typeof window === 'undefined' && process.argv[1] && fileURLToPath(import.met
   run().catch(console.dir);
 }
 
-export async function getMongoDocument(query) {
-  const uri = process.env.VITE_MONGODB_URI;
-  if (!uri) throw new Error('VITE_MONGODB_URI not set');
-  const client = new MongoClient(uri, {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    },
-  });
-
-  try {
-    await client.connect();
-    const database = client.db(process.env.VITE_MONGODB_CLUSTER);
-    const collection = database.collection(process.env.VITE_MONGODB_COLLECTION);
-    const document = await collection.findOne(query);
-    return document;
-  } finally {
-    await client.close();
-  }
-}
-
 /**
  * Get all documents from a collection (server-side helper)
  * @param {string} collectionName
@@ -54,10 +35,10 @@ export async function getMongoDocument(query) {
  * @returns {Promise<Array>}
  */
 export async function getCollectionDocuments(collectionName, query = {}) {
-  const uri = process.env.VITE_MONGODB_URI;
-  if (!uri) throw new Error('VITE_MONGODB_URI not set');
 
-  const client = new MongoClient(uri, {
+  if (!process.env.VITE_MONGODB_URI) throw new Error('VITE_MONGODB_URI not set');
+
+  const client = new MongoClient(process.env.VITE_MONGODB_URI, {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
@@ -67,7 +48,7 @@ export async function getCollectionDocuments(collectionName, query = {}) {
 
   try {
     await client.connect();
-    const database = client.db(process.env.VITE_MONGODB_CLUSTER);
+    const database = client.db(process.env.VITE_MONGODB_COLLECTION);
     const collection = database.collection(collectionName);
     const documents = await collection.find(query).toArray();
     return documents;
@@ -81,10 +62,9 @@ export async function getCollectionDocuments(collectionName, query = {}) {
  * @returns {Promise<Array<{name:string,count:number}>>}
  */
 export async function listCollectionsInfo() {
-  const uri = process.env.VITE_MONGODB_URI;
-  if (!uri) throw new Error('VITE_MONGODB_URI not set');
+  if (!process.env.VITE_MONGODB_URI) throw new Error('VITE_MONGODB_URI not set');
 
-  const client = new MongoClient(uri, {
+  const client = new MongoClient(process.env.VITE_MONGODB_URI, {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
@@ -94,7 +74,7 @@ export async function listCollectionsInfo() {
 
   try {
     await client.connect();
-    const database = client.db(process.env.VITE_MONGODB_CLUSTER);
+    const database = client.db(process.env.VITE_MONGODB_COLLECTION);
     const collections = await database.listCollections().toArray();
     const results = [];
     for (const c of collections) {

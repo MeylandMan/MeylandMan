@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { getMongoDocument, getCollectionDocuments, listCollectionsInfo } from '../src/apis/MongoDB.js';
+import { getCollectionDocuments, listCollectionsInfo } from '../src/apis/MongoDB.js';
 
 dotenv.config();
 
