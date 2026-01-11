@@ -19,18 +19,6 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
   };
 };
 
-export const experiences = [
-    {
-        id: 0,
-        name: "EVA STUDIO",
-        position: "Freelance Backend Developer",
-        duration: "Aug. 2025 - present",
-        location: "Île-de-France, France · Remote",
-        title: "My work involves developing and maintaining backend systems for various applications, ensuring robust performance and scalability.",
-        icon: "eva-studio.png"
-    }
-];
-
 export const projects = [
     {
         id: 0,
