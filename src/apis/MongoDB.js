@@ -35,10 +35,10 @@ if (typeof window === 'undefined' && process.argv[1] && fileURLToPath(import.met
  * @returns {Promise<Array>}
  */
 export async function getCollectionDocuments(collectionName, query = {}) {
+  const uri = process.env.VITE_MONGODB_URI || process.env.MONGODB_URI;
+  if (!uri) throw new Error('VITE_MONGODB_URI not set');
 
-  if (!process.env.VITE_MONGODB_URI) throw new Error('VITE_MONGODB_URI not set');
-
-  const client = new MongoClient(process.env.VITE_MONGODB_URI, {
+  const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
@@ -62,9 +62,10 @@ export async function getCollectionDocuments(collectionName, query = {}) {
  * @returns {Promise<Array<{name:string,count:number}>>}
  */
 export async function listCollectionsInfo() {
-  if (!process.env.VITE_MONGODB_URI) throw new Error('VITE_MONGODB_URI not set');
+  const uri = process.env.VITE_MONGODB_URI || process.env.MONGODB_URI;
+  if (!uri) throw new Error('VITE_MONGODB_URI not set');
 
-  const client = new MongoClient(process.env.VITE_MONGODB_URI, {
+  const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
