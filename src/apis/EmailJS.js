@@ -42,7 +42,7 @@ export const getEnv = (name) => {
 
 
 const PUBLIC_KEY = getEnv("PUBLIC_KEY") || getEnv("EMAILJS_PUBLIC_KEY") || getEnv("VITE_EMAILJS_PUBLIC_KEY") || null;
-const SERVICE_ID = getEnv("SERVICE_ID") || getEnv("EMAILJSSERVICE_ID") || getEnv("VITE_EMAILJS_SERVICE_ID") || null;
+const SERVICE_ID = getEnv("SERVICE_ID") || getEnv("EMAILJS_SERVICE_ID") || getEnv("VITE_EMAILJS_SERVICE_ID") || null;
 const TEMPLATE_ADMIN = getEnv("TEMPLATE_ADMIN") || getEnv("EMAILJS_TEMPLATE_ADMIN") || getEnv("VITE_EMAILJS_TEMPLATE_ADMIN") || null;
 const TEMPLATE_USER = getEnv("TEMPLATE_USER") || getEnv("EMAILJS_TEMPLATE_USER") || getEnv("VITE_EMAILJS_TEMPLATE_USER") || null;
 const ADMIN_EMAIL = getEnv("ADMIN_EMAIL") || getEnv("EMAILJS_ADMIN_EMAIL") || getEnv("VITE_EMAILJS_ADMIN_EMAIL") || null;
