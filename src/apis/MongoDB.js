@@ -36,7 +36,7 @@ if (typeof window === 'undefined' && process.argv[1] && fileURLToPath(import.met
  */
 export async function getCollectionDocuments(collectionName, query = {}) {
   const uri = process.env.VITE_MONGODB_URI || process.env.MONGODB_URI;
-  if (!uri) throw new Error('VITE_MONGODB_URI not set');
+  if (!uri) throw new Error('VITE_MONGODB_URI or MONGODB_URI not set');
 
   const client = new MongoClient(uri, {
     serverApi: {
@@ -46,9 +46,12 @@ export async function getCollectionDocuments(collectionName, query = {}) {
     },
   });
 
+  const DatabaseName = process.env.VITE_MONGODB_DB || process.env.MONGODB_DB;
+  if (!DatabaseName) throw new Error('VITE_MONGODB_DB or MONGODB_DB not set');
+
   try {
     await client.connect();
-    const database = client.db(process.env.VITE_MONGODB_COLLECTION);
+    const database = client.db(DatabaseName);
     const collection = database.collection(collectionName);
     const documents = await collection.find(query).toArray();
     return documents;
@@ -73,9 +76,12 @@ export async function listCollectionsInfo() {
     },
   });
 
+  const DatabaseName = process.env.VITE_MONGODB_DB || process.env.MONGODB_DB;
+  if (!DatabaseName) throw new Error('VITE_MONGODB_DB or MONGODB_DB not set');
+  
   try {
     await client.connect();
-    const database = client.db(process.env.VITE_MONGODB_COLLECTION);
+    const database = client.db(DatabaseName);
     const collections = await database.listCollections().toArray();
     const results = [];
     for (const c of collections) {
