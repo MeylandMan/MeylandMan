@@ -23,3 +23,9 @@ jobs:
 
       - name: Run tests
         run: npm run test
+        env: 
+          EMAILJS_ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+          EMAILJS_PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
+          EMAILJS_SERVICE_ID: ${{ secrets.SERVICE_ID }}
+          EMAILJS_TEMPLATE_ADMIN: ${{ secrets.TEMPLATE_ADMIN }}
+          EMAILJS_TEMPLATE_USER: ${{ secrets.TEMPLATE_USER }}

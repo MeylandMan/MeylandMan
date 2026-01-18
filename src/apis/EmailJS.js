@@ -14,39 +14,12 @@ const sanitize = (val) => {
   return s;
 };
 
-export const getEnv = (name) => {
-  const candidates = [];
-  // Vite exposes import.meta.env in the bundled client — access it safely
-  try {
-    const meta = import.meta && import.meta.env;
-    if (meta) {
-      candidates.push(
-        meta[name],
-        meta[`VITE_${name}`],
-        meta[`VITE_${name.toUpperCase()}`],
-        meta[`VITE_EMAILJS_${name.toUpperCase()}`]
-      );
-    }
-  } catch (e) {
-    // import.meta may not be accessible in some bundlers/environments; ignore
-  }
 
-  // Fallback for Node.js environments
-  if (typeof process !== "undefined" && process.env) {
-    candidates.push(process.env[name], process.env[`VITE_${name}`]);
-  }
-
-  const found = candidates.find((v) => v !== undefined && v !== null);
-  return sanitize(found);
-};
-
-
-const PUBLIC_KEY = getEnv("PUBLIC_KEY") || getEnv("EMAILJS_PUBLIC_KEY") || getEnv("VITE_EMAILJS_PUBLIC_KEY") || null;
-const SERVICE_ID = getEnv("SERVICE_ID") || process.env.EMAILJS_SERVICE_ID|| getEnv("VITE_EMAILJS_SERVICE_ID") || null;
-const TEMPLATE_ADMIN = getEnv("TEMPLATE_ADMIN") || process.env.EMAILJS_TEMPLATE_ADMIN || getEnv("VITE_EMAILJS_TEMPLATE_ADMIN") || null;
-const TEMPLATE_USER = getEnv("TEMPLATE_USER") || process.env.EMAILJS_TEMPLATE_USER || getEnv("VITE_EMAILJS_TEMPLATE_USER") || null;
-const ADMIN_EMAIL = getEnv("ADMIN_EMAIL") || process.env.EMAILJS_ADMIN_EMAIL || getEnv("VITE_EMAILJS_ADMIN_EMAIL") || null;
-
+const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY || import.meta.env.VITE_EMAILJS_PUBLIC_KEY || null;
+const SERVICE_ID = import.meta.env.VITE_SERVICE_ID || import.meta.env.VITE_EMAILJS_SERVICE_ID || null;
+const TEMPLATE_ADMIN = import.meta.env.VITE_TEMPLATE_ADMIN || import.meta.env.VITE_EMAILJS_TEMPLATE_ADMIN || null;
+const TEMPLATE_USER = import.meta.env.VITE_TEMPLATE_USER || import.meta.env.VITE_EMAILJS_TEMPLATE_USER || null;
+const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL || import.meta.env.VITE_EMAILJS_ADMIN_EMAIL || null;
 /**
  * Initialize EmailJS (optional)
  */
@@ -60,7 +33,7 @@ export const initEmailJS = (publicKey = PUBLIC_KEY) => {
   }
 
   // Dev-only: show masked key information and warn about suspicious chars
-  if (typeof process !== "undefined" && process.env && process.env.NODE_ENV !== "production") {
+  if (import.meta.env.DEV) {
     try {
       const masked = `${pk.slice(0, 6)}...${pk.slice(-4)}`;
       console.info(`EmailJS public key detected (masked): ${masked} (length: ${pk.length})`);
