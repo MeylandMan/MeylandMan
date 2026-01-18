@@ -6,7 +6,7 @@ import { getCollectionDocuments, listCollectionsInfo } from './MongoDB.js';
 dotenv.config();
 
 const corsOptions = {
-  origin: [process.env.CORS_ORIGIN || 'https://localhost:5173'],
+  origin: [process.env.CORS_ORIGIN || 'http://localhost:5173'],
   optionsSuccessStatus: 200
 };
 

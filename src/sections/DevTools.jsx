@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import fetchData from '@apis/server';
 
 const DevTools = () => {
 
@@ -7,12 +8,7 @@ const DevTools = () => {
     const [linksError, setLinksError] = useState(null);
 
     useEffect(() => {
-    fetch('/api/devTools')
-        .then(res => {
-        if (!res.ok) throw new Error('Network response not ok');
-        console.debug(res);
-        return res.json();
-        })
+    fetchData('devTools')
         .then(data => {
         let links = [];
         if (Array.isArray(data) && data.length) {

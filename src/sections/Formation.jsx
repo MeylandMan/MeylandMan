@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import fetchData from '@apis/server';
 
 const Formation = () => {
     const [serverLinks, setServerLinks] = useState([]);
@@ -6,37 +7,32 @@ const Formation = () => {
     const [linksError, setLinksError] = useState(null);
 
     useEffect(() => {
-    fetch('/api/formations')
-        .then(res => {
-        if (!res.ok) throw new Error('Network response not ok');
-        console.debug(res);
-        return res.json();
-        })
-        .then(data => {
-        let links = [];
-        if (Array.isArray(data) && data.length) {
-            links = data;
-        } else if (Array.isArray(data?.documents) && data.documents.length) {
-            links = data.documents;
-        } else if (data?.links && Array.isArray(data.links) && data.links.length) {
-            links = data.links;
-        }
-        links = links.map((d, i) => ({
-            id: (d._id && d._id.toString?.()) || d.id || String(i),
-            title: d.title || '',
-            diploma: d.diploma || '',
-            date: d.date || '',
-            image: d.image || '',
-            alt: d.alt || ''
-        }));
+        fetchData('formations')
+            .then(data => {
+                let links = [];
+                if (Array.isArray(data) && data.length) {
+                    links = data;
+                } else if (Array.isArray(data?.documents) && data.documents.length) {
+                    links = data.documents;
+                } else if (data?.links && Array.isArray(data.links) && data.links.length) {
+                    links = data.links;
+                }
+                links = links.map((d, i) => ({
+                    id: (d._id && d._id.toString?.()) || d.id || String(i),
+                    title: d.title || '',
+                    diploma: d.diploma || '',
+                    date: d.date || '',
+                    image: d.image || '',
+                    alt: d.alt || ''
+                }));
 
-        if (links.length) setServerLinks(links);
-        })
-        .catch(err => {
-        console.debug('Fetch /api/formations failed:', err.message);
-        setLinksError(err.message);
-        })
-        .finally(() => setLoadingLinks(false));
+                if (links.length) setServerLinks(links);
+            })
+            .catch(err => {
+                console.debug('Fetch /api/formations failed:', err.message);
+                setLinksError(err.message);
+            })
+            .finally(() => setLoadingLinks(false));
     }, [serverLinks]);
 
     return (

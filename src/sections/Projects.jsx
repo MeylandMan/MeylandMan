@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import fetchData from '@apis/server';
 
 import githubLogo from "@assets/projects/mark-github-16.svg";
 import rssLogo from "@assets/projects/rss-16.svg";
@@ -10,12 +11,7 @@ const Projects = () => {
   const [linksError, setLinksError] = useState(null);
 
   useEffect(() => {
-  fetch('/api/projects')
-      .then(res => {
-      if (!res.ok) throw new Error('Network response not ok');
-      console.debug(res);
-      return res.json();
-      })
+  fetchData('projects')
       .then(data => {
       let links = [];
       if (Array.isArray(data) && data.length) {
