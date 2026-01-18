@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { getCollectionDocuments, listCollectionsInfo } from '../src/apis/MongoDB.js';
+import { getCollectionDocuments, listCollectionsInfo } from './MongoDB.js';
 
 dotenv.config();
 
@@ -11,7 +11,7 @@ const corsOptions = {
 };
 
 const app = express();
-app.use(express.json());
+app.use(cors(corsOptions));
 
 app.get('/api/doc', async (req, res) => {
   const collectionName = req.query.collection;
