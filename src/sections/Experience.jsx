@@ -41,7 +41,7 @@ const Experience = () => {
       <div className="w-full text-white">
         <p className="head-text">My Work Experience</p>
 
-        <div className="col-span-2 rounded-lg bg-zinc-950 border border-zinc-700 shadow-lg shadow-black-900/50 overflow-hidden">
+        <div className="col-span-2 rounded-lg bg-gray-900 border border-zinc-700 shadow-lg shadow-black-900/50 overflow-hidden">
             <div className="sm:py-10 py-5 sm:px-5 px-2.5">
               {serverLinks.map((item, index) => (
                 <div key={index} className="grid grid-cols-[auto_1fr] items-start gap-5  transition-all ease-in-out duration-500 hover:bg-black-300 rounded-lg sm:px-5 px-2.5 group">
