@@ -8,15 +8,13 @@
     "build": "vite build",
     "lint": "eslint .",
     "test": "vitest",
-    "preview": "vite preview",
-    "start:server": "node server/index.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@react-three/drei": "^10.6.1",
     "@react-three/fiber": "^9.2.0",
     "aos": "^2.3.4",
-    "express": "^5.2.1",
     "leva": "^0.10.1",
     "maath": "^0.10.8",
     "mongodb": "^7.0.0",

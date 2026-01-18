@@ -1,8 +1,14 @@
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import { getCollectionDocuments, listCollectionsInfo } from '../src/apis/MongoDB.js';
 
 dotenv.config();
+
+const corsOptions = {
+  origin: [process.env.CORS_ORIGIN || 'https://localhost:5173'],
+  optionsSuccessStatus: 200
+};
 
 const app = express();
 app.use(express.json());
