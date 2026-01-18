@@ -38,19 +38,24 @@ const Footer = () => {
     return (
     <footer className="w-full bg-gray-900 py-8 px-5">
         <div className="max-w-7xl mx-auto flex flex-col items-center gap-6">
-            <p className="text-gray-gradient text-lg font-medium">©Copyright 2025 - Allan Meyland</p>
+            <p className="text-gray-gradient text-lg font-medium">©Copyright 2026 - Allan Meyland</p>
             <ul className="flex gap-6">
                 {serverLinks.map((item, index) => (
                     <li key={index} className="transition-transform hover:scale-110">
                         <a href={item.link} target="_blank" rel="noreferrer" className="block">
-                            <img src={item.icon} alt={item.name} className="w-8 h-8 filter brightness-75 hover:brightness-100 transition-all" />
+                            <img src={`src/assets/${item.icon}`} alt={item.name} className="w-8 h-8 filter brightness-75 hover:brightness-100 transition-all" />
                         </a>
                     </li>
                 ))}
             </ul>
-            <p className="text-neutral-400 text-sm">
-                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            </p>
+            <div className="flex gap-4">
+                <p className="text-neutral-400 text-sm">
+                    <a href="#" className="hover:text-white transition-colors">Terms & conditions</a>
+                </p>
+                <p className="text-neutral-400 text-sm">
+                    <a href="#" className="hover:text-white transition-colors">Privacy policy</a>
+                </p>
+            </div>
         </div>
     </footer>
     )
