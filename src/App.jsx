@@ -12,9 +12,8 @@ import Footer from '@sections/Footer';
 
 /*
 <About/>
-<Experience />
 
-<Footer />
+
 */
 
 function App() {
@@ -28,6 +27,7 @@ function App() {
     <DevTools />
     <DevSkills />
     <Contact />
+    <Footer />
     </>
   );
 }
