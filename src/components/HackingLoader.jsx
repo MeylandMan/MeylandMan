@@ -99,31 +99,43 @@ export default function HackingLoader({ isReady, onZoomStart }) {
     const dest = terminalCanvasRef.current;
     if (!dest) return;
 
-    const W = 1024, H = 512;
+    // Draw content straight — Three.js texture handles the UV rotation.
+    // 2:1 ratio matches the monitor mesh UV proportions.
+    const W = 2048;
+    const H = 1024;
     dest.width  = W;
     dest.height = H;
+
     const ctx = dest.getContext('2d');
 
+    // Background
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, W, H);
 
-    ctx.font        = '14px "Courier New", monospace';
-    ctx.fillStyle   = '#00e060';
-    ctx.shadowColor = 'rgba(0,224,96,0.55)';
-    ctx.shadowBlur  = 10;
+    // Auto-fit: fill the full height with all lines
+    const N        = BOOT_LINES.length + 1; // +1 for cursor
+    const padV     = 40;
+    const padH     = 56;
+    const lineH    = Math.floor((H - padV * 2) / N);
+    const fontSize = Math.max(10, Math.floor(lineH * 0.74));
 
-    const lineH  = 26;
-    const startY = 40;
-    const startX = 32;
+    ctx.font         = `${fontSize}px "Courier New", monospace`;
+    ctx.fillStyle    = '#00e060';
+    ctx.shadowColor  = 'rgba(0,224,96,0.65)';
+    ctx.shadowBlur   = fontSize * 0.55;
+    ctx.textBaseline = 'top';
 
     BOOT_LINES.forEach((line, i) => {
-      ctx.fillText(line.text, startX, startY + i * lineH);
+      ctx.fillText(line.text, padH, padV + i * lineH);
     });
-    ctx.fillText('\u2588', startX, startY + BOOT_LINES.length * lineH);
+    // Cursor on last line
+    ctx.shadowBlur = fontSize * 0.9;
+    ctx.fillText('\u2588', padH, padV + BOOT_LINES.length * lineH);
 
+    // CRT scanlines
     ctx.shadowBlur = 0;
     for (let y = 0; y < H; y += 4) {
-      ctx.fillStyle = 'rgba(0,0,0,0.10)';
+      ctx.fillStyle = 'rgba(0,0,0,0.08)';
       ctx.fillRect(0, y, W, 2);
     }
 

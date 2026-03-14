@@ -20,20 +20,17 @@ const DeskScene = ({ sizes, isMobile, onModelLoaded }) => {
     <>
       <Leva hidden />
       <PerspectiveCamera makeDefault position={[0, 0, 30]} />
-
       <HeroCamera isMobile={isMobile}>
         <Desk
           scale={sizes.deskScale}
-          position={[0, 0, 0]}
+          position={sizes.deskPosition}
           rotation={[0.1, -Math.PI / 2, 0]}
         />
       </HeroCamera>
-
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={groundPos} receiveShadow>
         <planeGeometry args={[50, 50]} />
         <shadowMaterial transparent opacity={0.35} />
       </mesh>
-
       <ambientLight intensity={0.5} />
       <directionalLight
         castShadow
@@ -54,27 +51,13 @@ const Hero = ({ onModelLoaded }) => {
   const isTablet  = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const sizes     = calculateSizes(isSmall, isMobile, isTablet);
 
-  // During zoom animation, the canvas covers the entire viewport at a high
-  // z-index so NavBar and other content never bleed through.
-  const isZooming = phase === 'zooming';
-
-  const sectionStyle = isZooming
-    ? {
-        position: 'fixed',
-        inset: 0,
-        zIndex: 9998,         // below HackingLoader (9999) but above everything else
-        background: '#010103',
-      }
-    : {};
+  const isDone = phase === 'done';
 
   return (
-    <section
-      className="min-h-screen w-full flex flex-col relative"
-      id="/"
-      style={sectionStyle}
-    >
-      {/* Hero text — hidden during zoom so only the 3D scene shows */}
-      {phase === 'done' && (
+    <section className="min-h-screen w-full flex flex-col relative" id="/">
+
+      {/* Hero text — only shown after reveal */}
+      {isDone && (
         <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
           <p className="sm:text-3xl text-xl font-medium text-white text-center">
             Hey, There !&nbsp;<br />I'm <strong>Meyland </strong>
@@ -86,7 +69,7 @@ const Hero = ({ onModelLoaded }) => {
         </div>
       )}
 
-      {/* 3D Canvas — always mounted for preloading, fills the section */}
+      {/* 3D Canvas — always mounted */}
       <div className="w-full h-full absolute inset-0">
         <Canvas className="w-full h-full" shadows dpr={[1, 2]}>
           <Suspense fallback={null}>
@@ -99,15 +82,11 @@ const Hero = ({ onModelLoaded }) => {
         </Canvas>
       </div>
 
-      {/* Contact button — only after zoom */}
-      {phase === 'done' && (
+      {/* Contact button */}
+      {isDone && (
         <div className="absolute bottom-7 left-0 right-0 w-full z-10 c-space">
           <a href="#contact" className="w-fit">
-            <Button
-              name="Contact me !"
-              isBeam
-              containerClass="sm:w-fit w-full sm:min-w-96"
-            />
+            <Button name="Contact me !" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
           </a>
         </div>
       )}

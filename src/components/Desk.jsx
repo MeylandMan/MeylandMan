@@ -20,12 +20,14 @@ export function Desk(props) {
     if (!canvas) return;
 
     const tex = new THREE.CanvasTexture(canvas);
-    tex.flipY = false;
-
-    // The monitor-screen mesh has rotation [0,0,-PI/2] in the GLB,
-    // which rotates UVs 90°. We counter-rotate the texture to fix it.
-    tex.rotation    = Math.PI / 2;
-    tex.center.set(0.5, 0.5);   // rotate around texture centre
+    // The monitor-screen mesh has rotation [0,0,-PI/2] in the GLB.
+    // To compensate without mirroring:
+    //   flipY: false  (canvas Y matches Three.js UV Y)
+    //   rotation: Math.PI/2  (rotate texture +90° CW to undo the mesh rotation)
+    //   center: (0.5, 0.5)   (rotate around texture centre)
+    tex.flipY    = false;
+    tex.rotation = -Math.PI / 2;
+    tex.center.set(0.5, 0.5);
     tex.needsUpdate = true;
 
     const mat = new THREE.MeshBasicMaterial({
