@@ -18,7 +18,6 @@ const BOOT_LINES = [
   { text: '> Fetching /api/experiences .......... done', delay: 3600 },
   { text: '> Parsing BSON documents... ██████████ 100%', delay: 4000 },
   { text: '> Loading 3D assets: desk.glb', delay: 4400 },
-  { text: '> Compiling GLSL shaders... ████████░░ 80%', delay: 4750 },
   { text: '> Compiling GLSL shaders... ██████████ 100%', delay: 5100 },
   { text: '> [OK] 3D model fully loaded', delay: 5450 },
   { text: '> All systems nominal. Launching...', delay: 5800 },

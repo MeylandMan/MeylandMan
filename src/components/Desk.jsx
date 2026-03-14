@@ -6,47 +6,62 @@ Modified: monitor-screen mesh accepts a terminal canvas texture
 
 import { useEffect, useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useLoaderContext } from './LoaderContext';
 
 export function Desk(props) {
   const { nodes, materials } = useGLTF('./models/desk.glb');
   const { canvasRef, phase } = useLoaderContext();
-  const matRef = useRef(null);
 
+  // Stable refs — never reassigned after creation, never cleaned up mid-life
+  const texRef     = useRef(null);
+  const matRef     = useRef(null);
+  const meshRef    = useRef(null);
+  const appliedRef = useRef(false); // guard: apply texture only once
+
+  // Build texture exactly once when phase hits 'zooming'
+  // No cleanup return — we keep it alive for the entire session
   useEffect(() => {
+    if (appliedRef.current) return;           // already done
     if (phase !== 'zooming') return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    appliedRef.current = true;
+
     const tex = new THREE.CanvasTexture(canvas);
-    // The monitor-screen mesh has rotation [0,0,-PI/2] in the GLB.
-    // To compensate without mirroring:
-    //   flipY: false  (canvas Y matches Three.js UV Y)
-    //   rotation: Math.PI/2  (rotate texture +90° CW to undo the mesh rotation)
-    //   center: (0.5, 0.5)   (rotate around texture centre)
     tex.flipY    = false;
     tex.rotation = -Math.PI / 2;
     tex.center.set(0.5, 0.5);
     tex.needsUpdate = true;
+    texRef.current  = tex;
 
-    const mat = new THREE.MeshBasicMaterial({
-      map: tex,
-      toneMapped: false,
-    });
+    const mat = new THREE.MeshBasicMaterial({ map: tex, toneMapped: false });
     matRef.current = mat;
 
-    return () => {
-      tex.dispose();
-      mat.dispose();
-      matRef.current = null;
-    };
+    // Apply directly to the mesh imperatively — bypasses React re-render entirely
+    if (meshRef.current) {
+      meshRef.current.material = mat;
+    }
   }, [phase, canvasRef]);
 
-  const screenMaterial =
-    (phase === 'zooming' || phase === 'done') && matRef.current
-      ? matRef.current
-      : nodes['monitor-screen'].material;
+  // useFrame as a safety net: if the mesh re-renders and loses the material,
+  // re-apply it every frame until done (zero cost once stable)
+  useFrame(() => {
+    if (!meshRef.current || !matRef.current) return;
+    if (meshRef.current.material !== matRef.current) {
+      meshRef.current.material = matRef.current;
+    }
+  });
+
+  // Unmount cleanup only
+  useEffect(() => {
+    return () => {
+      texRef.current?.dispose();
+      matRef.current?.dispose();
+    };
+  }, []);
 
   return (
     <group {...props} dispose={null}>
@@ -63,11 +78,13 @@ export function Desk(props) {
         <mesh castShadow receiveShadow geometry={nodes.polySurface213_chair_wood1_0_10.geometry} material={materials.chair_cushion} />
       </group>
 
+      {/* ref on the screen mesh so we can apply the texture imperatively */}
       <mesh
+        ref={meshRef}
         castShadow
         receiveShadow
         geometry={nodes['monitor-screen'].geometry}
-        material={screenMaterial}
+        material={nodes['monitor-screen'].material}
         position={[-1.49, 25.89, -0.354]}
         rotation={[0, 0, -Math.PI / 2]}
         scale={[3.37, 0.979, 5.153]}
