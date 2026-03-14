@@ -78,7 +78,7 @@ function App() {
         </div>
 
         {/* Hero always mounted (3D Canvas preloads underneath loader) */}
-        <Hero onModelLoaded={handleModelLoaded} />
+        <Hero onModelLoaded={handleModelLoaded} siteVisible={siteVisible} />
 
         <div style={{
           opacity: siteVisible ? 1 : 0,
